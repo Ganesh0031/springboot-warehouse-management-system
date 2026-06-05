@@ -2,6 +2,7 @@ package com.example.WMS.entity;
 
 import com.example.WMS.enums.ProductCategory;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
@@ -9,13 +10,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 @Entity
+@Table(name="products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     @NotBlank
     private String name;
     @Column(nullable = false)
+    @DecimalMin("0.01")
     private BigDecimal productPrice;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -24,6 +28,9 @@ public class Product {
     private LocalDateTime updatedDate;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Inventory> inventories;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(name = "purchase_Order_id",nullable = false)
+    private PurchaseOrderItem purchaseOrderItem;
     @PrePersist
     public  void onCreate(){
         createdDate=LocalDateTime.now();
