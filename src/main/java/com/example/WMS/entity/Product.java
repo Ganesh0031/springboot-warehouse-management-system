@@ -28,9 +28,12 @@ public class Product {
     private LocalDateTime updatedDate;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Inventory> inventories;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "purchase_Order_id",nullable = false)
-    private PurchaseOrderItem purchaseOrderItem;
+    @OneToMany(mappedBy = "product")
+    private List<PurchaseOrderItem> purchaseOrderItems;
+    @OneToMany(mappedBy = "product")
+    private List<SalesOrderItem> salesOrderItems;
+    @OneToMany(mappedBy = "product")
+    private List<StockTransferItem> stockTransferItems;
     @PrePersist
     public  void onCreate(){
         createdDate=LocalDateTime.now();
