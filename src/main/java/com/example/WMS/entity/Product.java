@@ -34,6 +34,8 @@ public class Product {
     private List<SalesOrderItem> salesOrderItems;
     @OneToMany(mappedBy = "product")
     private List<StockTransferItem> stockTransferItems;
+    @OneToMany(mappedBy = "product")
+    private List<GoodReceiptItem>goodReceiptItems;
     @PrePersist
     public  void onCreate(){
         createdDate=LocalDateTime.now();

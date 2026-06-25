@@ -12,7 +12,7 @@ public class PurchaseOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String poNumber;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -22,6 +22,8 @@ public class PurchaseOrder {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id",nullable = false)
     private Supplier supplier;
+    @OneToMany(mappedBy ="purchaseOrder_id",cascade = CascadeType.ALL)
+    private List<GoodsReceipt> goodsReceipts;
 
     @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.ALL)
     List<PurchaseOrderItem>purchaseOrderItems;
