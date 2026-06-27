@@ -19,7 +19,7 @@ public class PurchaseOrderItem {
     @DecimalMin("0.01")
     private BigDecimal unitPrice;
 
-
+    private BigDecimal lineTotal;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "purchase_order_id", nullable = false)
     private PurchaseOrder purchaseOrder;

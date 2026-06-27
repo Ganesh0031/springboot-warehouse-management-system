@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Entity
 @Table(name = "suppliers")
-public class Supplier {
+public class Supplier  extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  id;
@@ -29,16 +29,7 @@ public class Supplier {
     @Column(nullable = false,unique = true)
     @Email
     private String email;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
     @OneToMany(mappedBy = "supplier",cascade = CascadeType.ALL)
     private List<PurchaseOrder>purchaseOrders=new ArrayList<>();
-    @PrePersist
-    public void createdOn(){
-        this.createdAt=LocalDateTime.now();
-    }
-    @PreUpdate
-    public void updatedOn(){
-        this.updatedAt=LocalDateTime.now();
-    }
+
 }

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Locale;
 @Entity
 @Table(name="products")
-public class Product {
+public class Product  extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,12 +20,10 @@ public class Product {
     private String name;
     @Column(nullable = false)
     @DecimalMin("0.01")
-    private BigDecimal productPrice;
+    private BigDecimal unitPrice;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ProductCategory category;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Inventory> inventories;
     @OneToMany(mappedBy = "product")
@@ -36,12 +34,7 @@ public class Product {
     private List<StockTransferItem> stockTransferItems;
     @OneToMany(mappedBy = "product")
     private List<GoodReceiptItem>goodReceiptItems;
-    @PrePersist
-    public  void onCreate(){
-        createdDate=LocalDateTime.now();
-    }
-    @PreUpdate
-    public void onUpdate(){
-        updatedDate=LocalDateTime.now();
-    }
+    @OneToMany(mappedBy = "product")
+    private List<InventoryTransaction>inventoryTransactions;
+
 }

@@ -1,12 +1,21 @@
 package com.example.WMS.entity;
 
 import jakarta.persistence.*;
+import tools.jackson.core.ObjectReadContext;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-
-public class Inventory {
+@Table(
+        name = "inventory",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"warehouse_id", "product_id"}
+                )
+        }
+)
+public class Inventory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,16 +33,7 @@ public class Inventory {
 
     @Column(nullable = false)
     private Integer availableQuantity;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    @PrePersist
-  public void createOn(){
-      createdAt=LocalDateTime.now();
-  }
-  @PreUpdate
-  public void updateOn(){
-        updatedAt=LocalDateTime.now();
-  }
+
   @PrePersist
   @PreUpdate
   public  void calculateAvailabeQuanity(){

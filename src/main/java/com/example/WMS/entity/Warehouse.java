@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "warehouses")
-public class Warehouse{
+public class Warehouse extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,12 +29,6 @@ public class Warehouse{
     private User user;
     @OneToMany(mappedBy = "warehouse",cascade = CascadeType.ALL)
     private List<Inventory> inventory;
-    @PrePersist
-    public void OnCreateAt(){
-        createdAt=LocalDateTime.now();
-    }
-    @PreUpdate
-    public void onUpdateAt(){
-        updatedAt=LocalDateTime.now();
-    }
+    @OneToMany(mappedBy = "warehouse",cascade = CascadeType.ALL)
+    List<InventoryTransaction>inventoryTransactions;
 }

@@ -11,7 +11,7 @@ public class SalesOrderItem {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private Long quantity;
+    private Integer quantity;
     private BigDecimal unitPrice;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sales_order_id", nullable = false)
