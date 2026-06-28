@@ -29,4 +29,72 @@ public class GoodsReceipt extends BaseEntity{
     private List<GoodReceiptItem> items;
     private PurchaseOrder purchaseOrder;
 
+    public GoodsReceipt(Long id, String grnNumber, LocalDateTime receivedDate, GoodReceiptStatus status, String remarks, List<GoodReceiptItem> items, PurchaseOrder purchaseOrder) {
+        this.id = id;
+        this.grnNumber = grnNumber;
+        this.receivedDate = receivedDate;
+        this.status = status;
+        this.remarks = remarks;
+        this.items = items;
+        this.purchaseOrder = purchaseOrder;
+    }
+
+    public GoodsReceipt() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getGrnNumber() {
+        return grnNumber;
+    }
+
+    public void setGrnNumber(String grnNumber) {
+        this.grnNumber = grnNumber;
+    }
+
+    public LocalDateTime getReceivedDate() {
+        return receivedDate;
+    }
+
+    public void setReceivedDate(LocalDateTime receivedDate) {
+        this.receivedDate = receivedDate;
+    }
+
+    public GoodReceiptStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(GoodReceiptStatus status) {
+        this.status = status;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public List<GoodReceiptItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<GoodReceiptItem> items) {
+        this.items = items;
+    }
+
+    public PurchaseOrder getPurchaseOrder() {
+        return purchaseOrder;
+    }
+
+    public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
+    }
 }

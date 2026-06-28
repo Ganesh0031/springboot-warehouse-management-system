@@ -32,4 +32,63 @@ public class Supplier  extends BaseEntity{
     @OneToMany(mappedBy = "supplier",cascade = CascadeType.ALL)
     private List<PurchaseOrder>purchaseOrders=new ArrayList<>();
 
+    public Supplier() {
+    }
+
+    public Supplier(Long id, String supplierCode, String name, String mobileNumber, String email, List<PurchaseOrder> purchaseOrders) {
+        this.id = id;
+        this.supplierCode = supplierCode;
+        this.name = name;
+        this.mobileNumber = mobileNumber;
+        this.email = email;
+        this.purchaseOrders = purchaseOrders;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSupplierCode() {
+        return supplierCode;
+    }
+
+    public void setSupplierCode(String supplierCode) {
+        this.supplierCode = supplierCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<PurchaseOrder> getPurchaseOrders() {
+        return purchaseOrders;
+    }
+
+    public void setPurchaseOrders(List<PurchaseOrder> purchaseOrders) {
+        this.purchaseOrders = purchaseOrders;
+    }
 }

@@ -39,4 +39,64 @@ public class Inventory extends BaseEntity {
   public  void calculateAvailabeQuanity(){
         availableQuantity=quantity-reservedQuantity;
   }
+
+    public Inventory(Long id, Product product, Warehouse warehouse, Integer quantity, Integer reservedQuantity, Integer availableQuantity) {
+        this.id = id;
+        this.product = product;
+        this.warehouse = warehouse;
+        this.quantity = quantity;
+        this.reservedQuantity = reservedQuantity;
+        this.availableQuantity = availableQuantity;
+    }
+
+    public Inventory() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getReservedQuantity() {
+        return reservedQuantity;
+    }
+
+    public void setReservedQuantity(Integer reservedQuantity) {
+        this.reservedQuantity = reservedQuantity;
+    }
+
+    public Integer getAvailableQuantity() {
+        return availableQuantity;
+    }
+
+    public void setAvailableQuantity(Integer availableQuantity) {
+        this.availableQuantity = availableQuantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }
