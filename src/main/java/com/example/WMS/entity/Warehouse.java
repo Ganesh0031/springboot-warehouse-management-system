@@ -22,8 +22,6 @@ public class Warehouse extends BaseEntity{
     @NotBlank
     @Column(nullable = false,length = 10)
     private String pinCode;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id",nullable = false)
     private User user;
@@ -32,13 +30,12 @@ public class Warehouse extends BaseEntity{
     @OneToMany(mappedBy = "warehouse",cascade = CascadeType.ALL)
     List<InventoryTransaction>inventoryTransactions;
 
-    public Warehouse(Long id, String name, String address, String pinCode, LocalDateTime createdAt, LocalDateTime updatedAt, User user, List<Inventory> inventory, List<InventoryTransaction> inventoryTransactions) {
+    public Warehouse(Long id, String name, String address, String pinCode, User user, List<Inventory> inventory, List<InventoryTransaction> inventoryTransactions) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.pinCode = pinCode;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+
         this.user = user;
         this.inventory = inventory;
         this.inventoryTransactions = inventoryTransactions;
@@ -79,21 +76,7 @@ public class Warehouse extends BaseEntity{
         this.pinCode = pinCode;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 
     public User getUser() {
         return user;

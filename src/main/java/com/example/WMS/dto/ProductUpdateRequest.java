@@ -7,19 +7,19 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
-public class ProductRequest {
-    @NotBlank(message = "Product name is required")
+public class ProductUpdateRequest {
+    @NotBlank
     private String name;
-    @NotNull(message = "Unit price is required")
-    @DecimalMin(value="0.01",message = "Price must be greater than 0")
+    @NotNull
+    @DecimalMin("0.01")
     private BigDecimal unitPrice;
-    @NotNull(message = "category is required")
+    @NotNull
     private ProductCategory category;
 
-    public ProductRequest() {
+    public ProductUpdateRequest() {
     }
 
-    public ProductRequest(String name, BigDecimal unitPrice, ProductCategory category) {
+    public ProductUpdateRequest(String name, BigDecimal unitPrice, ProductCategory category) {
         this.name = name;
         this.unitPrice = unitPrice;
         this.category = category;
